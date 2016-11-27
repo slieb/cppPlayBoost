@@ -8,9 +8,9 @@
         <Process name="P5" descr="Description of P5" allowMultiple="true"/>
     </AMPSProcessTable>
     <AMPSRoutingTable>
-        <Message topic="ORDER" path="P1-P2-P3"/>
+        <Message topic="ORDER" path="P1-P2-P3-P4-P5"/>
         <Message topic="EXECUTION" path="P2-P4-P5"/>
         <Message topic="QUOTE" path="P1-P5"/>
-        <Message topic="HEARTBEAT" path=""/>
+        <Message topic="CANCEL" path="P2-P4-P5"/>
     </AMPSRoutingTable>
 </AMPSConfig>

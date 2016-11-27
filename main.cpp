@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string/classification.hpp>
 #include <set>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -75,13 +78,21 @@ int main() {
         std::cout << "\tAllowMultiple is " << sub_pt.get<std::string>("<xmlattr>.allowMultiple") << std::endl;
     }
 
+    using namespace boost::algorithm;
+
+    //iterate through routing paths
     for (const auto& i : pt.get_child("AMPSConfig.AMPSRoutingTable")) {
         std::string name;
         ptree sub_pt;
         std::tie (name, sub_pt) = i;
         std::cout << "Message" << std::endl;
         std::cout << "\tTopic is " << sub_pt.get<std::string>("<xmlattr>.topic") << std::endl;
-        std::cout << "\tPath is " << sub_pt.get<std::string>("<xmlattr>.path") << std::endl;
+        std::string path = sub_pt.get<std::string>("<xmlattr>.path");
+        std::cout << "\tPath is " << path << std::endl;
+
+        std::vector<std::string> tokens;
+        split (tokens, path, is_any_of("-"), token_compress_on);
+        std::cout << "\tNumber of processes is " << tokens.size() << std::endl;
     }
 
     return 0;
