@@ -64,8 +64,8 @@ int main() {
     //parse the xml file into the property tree
     read_xml("../../sample.xml", pt);
 
-    //iterate
-    for (const auto& i : pt.get_child("AMPSProcessTable")) {
+    //iterate through processes
+    for (const auto& i : pt.get_child("AMPSConfig.AMPSProcessTable")) {
         std::string name;
         ptree sub_pt;
         std::tie (name, sub_pt) = i;
@@ -73,6 +73,15 @@ int main() {
         std::cout << "\tName is " << sub_pt.get<std::string>("<xmlattr>.name") << std::endl;
         std::cout << "\tDescription is " << sub_pt.get<std::string>("<xmlattr>.descr") << std::endl;
         std::cout << "\tAllowMultiple is " << sub_pt.get<std::string>("<xmlattr>.allowMultiple") << std::endl;
+    }
+
+    for (const auto& i : pt.get_child("AMPSConfig.AMPSRoutingTable")) {
+        std::string name;
+        ptree sub_pt;
+        std::tie (name, sub_pt) = i;
+        std::cout << "Message" << std::endl;
+        std::cout << "\tTopic is " << sub_pt.get<std::string>("<xmlattr>.topic") << std::endl;
+        std::cout << "\tPath is " << sub_pt.get<std::string>("<xmlattr>.path") << std::endl;
     }
 
     return 0;

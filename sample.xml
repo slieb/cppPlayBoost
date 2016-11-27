@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AMPSProcessTable>
-    <Process name="P1" descr="Description of P1" allowMultiple="true"/>
-    <Process name="P2" descr="Description of P2" allowMultiple="false"/>
-    <Process name="P3" descr="Description of P3" allowMultiple="false"/>
-    <Process name="P4" descr="Description of P4" allowMultiple="true"/>
-    <Process name="P5" descr="Description of P5" allowMultiple="true"/>
-</AMPSProcessTable>
+<AMPSConfig>
+    <AMPSProcessTable>
+        <Process name="P1" descr="Description of P1" allowMultiple="true"/>
+        <Process name="P2" descr="Description of P2" allowMultiple="false"/>
+        <Process name="P3" descr="Description of P3" allowMultiple="false"/>
+        <Process name="P4" descr="Description of P4" allowMultiple="true"/>
+        <Process name="P5" descr="Description of P5" allowMultiple="true"/>
+    </AMPSProcessTable>
+    <AMPSRoutingTable>
+        <Message topic="ORDER" path="P1-P2-P3"/>
+        <Message topic="EXECUTION" path="P2-P4-P5"/>
+        <Message topic="QUOTE" path="P1-P5"/>
+        <Message topic="HEARTBEAT" path=""/>
+    </AMPSRoutingTable>
+</AMPSConfig>
