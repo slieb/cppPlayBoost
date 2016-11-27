@@ -1,13 +1,21 @@
-#include "boost/date_time/gregorian/gregorian.hpp"
+#include <iostream>
 #include <set>
+#include <boost/date_time/gregorian/gregorian.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+
+using namespace boost::gregorian;
+using namespace boost::property_tree;
 
 void print_date(boost::gregorian::date d) {
-    using namespace boost::gregorian;
     std::cout << "\t" << d << std::endl;
 }
 
 int main() {
-    using namespace boost::gregorian;
+
+    //
+    //Explore some date logic with a holiday calendar
+    //
 
     //setting the output date format
     date_facet* facet(new date_facet("%A %B %d, %Y"));
@@ -43,6 +51,29 @@ int main() {
     //print the holidays to the screen
     std::cout << "Number Holidays in " << theYear << ": " << all_holidays.size() << std::endl;
     std::for_each(all_holidays.begin(), all_holidays.end(), print_date);
+
+    std::cout << "----------" << std::endl;
+
+    //
+    // Here we're playing around with BOOST's ability to parse XML files
+    //
+
+    //create an empty property tree object
+    ptree pt;
+
+    //parse the xml file into the property tree
+    read_xml("../../sample.xml", pt);
+
+    //iterate
+    for (const auto& i : pt.get_child("AMPSProcessTable")) {
+        std::string name;
+        ptree sub_pt;
+        std::tie (name, sub_pt) = i;
+        std::cout << "Process" << std::endl;
+        std::cout << "\tName is " << sub_pt.get<std::string>("<xmlattr>.name") << std::endl;
+        std::cout << "\tDescription is " << sub_pt.get<std::string>("<xmlattr>.descr") << std::endl;
+        std::cout << "\tAllowMultiple is " << sub_pt.get<std::string>("<xmlattr>.allowMultiple") << std::endl;
+    }
 
     return 0;
 }

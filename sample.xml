@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AMPSProcessTable>
+    <Process name="P1" descr="Description of P1" allowMultiple="true"/>
+    <Process name="P2" descr="Description of P2" allowMultiple="false"/>
+    <Process name="P3" descr="Description of P3" allowMultiple="false"/>
+    <Process name="P4" descr="Description of P4" allowMultiple="true"/>
+    <Process name="P5" descr="Description of P5" allowMultiple="true"/>
+</AMPSProcessTable>
