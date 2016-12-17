@@ -28,6 +28,9 @@ if (Boost_FOUND)
 
 endif()
 
-set(SOURCE_FILES main.cpp)
-add_executable(cppBoostPlay ${SOURCE_FILES})
-target_link_libraries (cppBoostPlay ${Boost_LIBRARIES})
+set(SOURCE_HOLIDAY_FILES playHoliday.cpp)
+add_executable(playHoliday ${SOURCE_HOLIDAY_FILES})
+set(SOURCE_JSON_FILES playJson.cpp)
+add_executable(playJson ${SOURCE_JSON_FILES})
+set(SOURCE_XML_FILES playXml.cpp)
+add_executable(playXml ${SOURCE_XML_FILES})

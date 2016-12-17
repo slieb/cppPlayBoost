@@ -1,0 +1,15 @@
+{
+  "orcaConfig": {
+    "ANALYST_ORDER": [
+      "P1",
+      "P2",
+      "P3",
+      "P4"
+    ],
+    "PM_ORDER": [
+      "P1",
+      "P2",
+      "P4"
+    ]
+  }
+}
