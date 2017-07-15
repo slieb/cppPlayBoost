@@ -12,7 +12,7 @@ set (BOOST_COMPONENTS_NEEDED timer chrono system)
 set (Boost_USE_STATIC_LIBS OFF)
 set (Boost_USE_MULTITHREAD ON)
 
-find_package(Boost 1.61.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS_NEEDED})
+find_package(Boost 1.64.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS_NEEDED})
 
 include_directories(${Boost_INCLUDE_DIR})
 
